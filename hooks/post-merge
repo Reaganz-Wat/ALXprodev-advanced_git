@@ -1,0 +1,9 @@
+#!/bin/bash
+# Post-merge hook: log merges into main branch
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$current_branch" = "main" ]; then
+    log_file=".git/merge_log.txt"
+    echo "✅ Merge into main branch completed at $(date)" >> "$log_file"
+fi
